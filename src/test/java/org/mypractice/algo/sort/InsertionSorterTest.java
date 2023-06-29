@@ -1,10 +1,11 @@
-package org.mypractice.algo;
+package org.mypractice.algo.sort;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class InsertionSorterTest {
@@ -14,7 +15,7 @@ public class InsertionSorterTest {
 
     @BeforeEach
     public void setup() {
-        sorter = new InsertionSorter();
+        sorter = new InsertionSorter<Integer>();
         UNSORTED_1.add(24);
         UNSORTED_1.add(2);
         UNSORTED_1.add(0);
@@ -23,15 +24,16 @@ public class InsertionSorterTest {
     }
 
     @Test
-    void returnsNull() {
+    void simple_sorted_correctly() {
         List<Integer> output = sorter.sort(UNSORTED_1);
         Assertions.assertNotNull(output);
         Assertions.assertTrue(isSorted(output));
     }
 
-    boolean isSorted(final List<Integer> list) {
+    <T extends Comparable<T>> boolean isSorted(final List<T> list) {
+        if (list == null) return true;
         for (int i = 1; i < list.size(); i++) {
-            if (list.get(i) < list.get(i - 1)) return false;
+            if (list.get(i).compareTo(list.get(i - 1)) < 0) return false;
         }
         return true;
     }
