@@ -2,39 +2,35 @@ package org.mypractice.algo.sort;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class InsertionSorterTest {
 
-    private InsertionSorter sorter;
-    private static final List<Integer> UNSORTED_1 = new ArrayList<>();
+    private final SortTestUtils testUtils = new SortTestUtils();
 
     @BeforeEach
     public void setup() {
-        sorter = new InsertionSorter<Integer>();
-        UNSORTED_1.add(24);
-        UNSORTED_1.add(2);
-        UNSORTED_1.add(0);
-        UNSORTED_1.add(859);
-        UNSORTED_1.add(-5);
     }
 
-    @Test
-    void simple_sorted_correctly() {
-        List<Integer> output = sorter.sort(UNSORTED_1);
+    @ParameterizedTest
+    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getRandomIntLists")
+    void random_int_list_different_sizes(List<Integer> list) {
+        InsertionSorter<Integer> sorter = new InsertionSorter<>();
+        List<Integer> output = sorter.sort(list);
         Assertions.assertNotNull(output);
-        Assertions.assertTrue(isSorted(output));
+        Assertions.assertTrue(testUtils.isSorted(output));
     }
 
-    <T extends Comparable<T>> boolean isSorted(final List<T> list) {
-        if (list == null) return true;
-        for (int i = 1; i < list.size(); i++) {
-            if (list.get(i).compareTo(list.get(i - 1)) < 0) return false;
-        }
-        return true;
+    @ParameterizedTest
+    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getRandomDoublesLists")
+    void random_double_list_different_sizes(List<Double> list) {
+        InsertionSorter<Double> sorter = new InsertionSorter<>();
+        List<Double> output = sorter.sort(list);
+        Assertions.assertNotNull(output);
+        Assertions.assertTrue(testUtils.isSorted(output));
     }
+
 }

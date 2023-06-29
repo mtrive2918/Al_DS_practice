@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class defines insertion sort implementation
+ * This class defines insertion sort implementation of the Sorter interface.
+ * @param <T> Comparable type
  */
 public class InsertionSorter<T extends Comparable<T>> implements Sorter<T> {
 
