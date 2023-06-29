@@ -23,7 +23,16 @@ public class InsertionSorterTest {
     }
 
     @Test
-    public void returnsNull() {
-        Assertions.assertNull(sorter.sort(UNSORTED_1));
+    void returnsNull() {
+        List<Integer> output = sorter.sort(UNSORTED_1);
+        Assertions.assertNotNull(output);
+        Assertions.assertTrue(isSorted(output));
+    }
+
+    boolean isSorted(final List<Integer> list) {
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) < list.get(i - 1)) return false;
+        }
+        return true;
     }
 }
