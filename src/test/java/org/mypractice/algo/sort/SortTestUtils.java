@@ -6,12 +6,10 @@ import java.util.stream.Stream;
 
 public final class SortTestUtils {
 
-    private SortUtils sortUtils = new SortUtils();
-
     private static final List<Integer> LIST_SIZES = List.of(10, 100, 10000, 10000);
     private static final long SEED = 104l;
 
-    <T extends Comparable<T>> boolean isSorted(final List<T> list) {
+    static <T extends Comparable<T>> boolean isSorted(final List<T> list) {
         if (list == null) return true;
         for (int i = 1; i < list.size(); i++) {
             if (list.get(i).compareTo(list.get(i - 1)) < 0) return false;
@@ -19,9 +17,9 @@ public final class SortTestUtils {
         return true;
     }
 
-    <T extends Comparable<T>> boolean isSorted(final List<T> list, final SortOrder sortOrder) {
+    static <T extends Comparable<T>> boolean isSorted(final List<T> list, final SortOrder sortOrder) {
         if (SortOrder.DOWN == sortOrder) {
-            sortUtils.reverse(list);
+            SortUtils.reverse(list);
         }
         return isSorted(list);
     }

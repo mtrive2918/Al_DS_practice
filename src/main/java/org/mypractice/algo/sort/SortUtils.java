@@ -4,7 +4,7 @@ import java.util.List;
 
 public final class SortUtils {
 
-    <T> void reverse(final List<T> original) {
+    public static <T> void reverse(final List<T> original) {
         if (original == null) {
             return;
         }
