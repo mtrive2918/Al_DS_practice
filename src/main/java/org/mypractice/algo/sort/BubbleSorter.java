@@ -7,6 +7,7 @@ public class BubbleSorter<T extends Comparable<T>> extends AbstractTwoWaySorter<
 
     @Override
     public List<T> sort(final List<T> unsortedList) {
+        if (unsortedList == null) return null;
         final List<T> mutableList = new ArrayList<>(unsortedList);
         final int len = mutableList.size();
         for (int i = 0; i < len; i++) {

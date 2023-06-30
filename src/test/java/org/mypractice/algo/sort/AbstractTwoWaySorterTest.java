@@ -3,14 +3,16 @@ package org.mypractice.algo.sort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.List;
 
 public abstract class AbstractTwoWaySorterTest {
 
-    private TwoWaySorter<Integer> integerSorter;
-    private TwoWaySorter<Double> doubleSorter;
+    protected TwoWaySorter<Integer> integerSorter;
+    protected TwoWaySorter<Double> doubleSorter;
 
     @BeforeEach
     public void setup() {
@@ -27,19 +29,53 @@ public abstract class AbstractTwoWaySorterTest {
         this.doubleSorter = doubleSorter;
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Integer list containing {1} randomly ordered elements.")
     @MethodSource("org.mypractice.algo.sort.SortTestUtils#getRandomIntLists")
-    protected void random_int_list_different_sizes_non_decreasing(List<Integer> list) {
+    protected void random_int_lists_sorted_up(List<Integer> list, int listSize) {
+        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        Assertions.assertNotNull(output);
+        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
+    }
+
+    @ParameterizedTest(name = "Double list containing {1} randomly ordered elements.")
+    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getRandomDoublesLists")
+    protected void random_double_lists_sorted_down(List<Double> list, int listSize) {
+        List<Double> output = doubleSorter.sort(list, SortOrder.DOWN);
+        Assertions.assertNotNull(output);
+        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.DOWN));
+    }
+
+    @ParameterizedTest(name = "Integer list containing {1} elements in increasing order.")
+    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getIncreasingIntLists")
+    protected void increasing_int_lists_sorted_up(List<Integer> list, int listSize) {
+        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        Assertions.assertNotNull(output);
+        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
+    }
+
+    @ParameterizedTest(name = "Integer list containing {1} elements in decreasing order.")
+    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getDecreasingIntLists")
+    protected void decreasing_int_lists_sorted_up(List<Integer> list, int listSize) {
         List<Integer> output = integerSorter.sort(list, SortOrder.UP);
         Assertions.assertNotNull(output);
         Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
     }
 
     @ParameterizedTest
-    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getRandomDoublesLists")
-    protected void random_int_list_different_sizes_non_increasing(List<Double> list) {
-        List<Double> output = doubleSorter.sort(list, SortOrder.DOWN);
+    @EmptySource
+    protected void empty_list(List<Integer> list) {
+        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
         Assertions.assertNotNull(output);
-        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.DOWN));
+        Assertions.assertEquals(0, output.size());
+        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
     }
+
+    @ParameterizedTest
+    @NullSource
+    protected void null_list(List<Integer> list) {
+        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        Assertions.assertNull(output);
+        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
+    }
+
 }
