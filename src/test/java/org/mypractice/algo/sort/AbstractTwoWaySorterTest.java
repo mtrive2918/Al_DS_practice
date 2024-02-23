@@ -3,9 +3,8 @@ package org.mypractice.algo.sort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.List;
 
@@ -62,19 +61,11 @@ public abstract class AbstractTwoWaySorterTest {
     }
 
     @ParameterizedTest
-    @EmptySource
+    @NullAndEmptySource
     protected void empty_list(List<Integer> list) {
         List<Integer> output = integerSorter.sort(list, SortOrder.UP);
         Assertions.assertNotNull(output);
         Assertions.assertEquals(0, output.size());
-        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
-    }
-
-    @ParameterizedTest
-    @NullSource
-    protected void null_list(List<Integer> list) {
-        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
-        Assertions.assertNull(output);
         Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
     }
 

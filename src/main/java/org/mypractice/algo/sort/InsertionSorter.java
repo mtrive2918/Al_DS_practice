@@ -1,6 +1,7 @@
 package org.mypractice.algo.sort;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,7 +12,9 @@ public class InsertionSorter<T extends Comparable<T>> implements Sorter<T> {
 
     @Override
     public List<T> sort(final List<T> unsortedList) {
-        if (unsortedList == null) return null;
+        if (unsortedList == null) {
+            return Collections.emptyList();
+        }
         final List<T> mutableList = new ArrayList<>(unsortedList);
         int len = mutableList.size();
         for (int i = 1; i < len; i++) {

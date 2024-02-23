@@ -8,22 +8,10 @@ import java.util.Optional;
  */
 public enum SortOrder {
 
-    UP("non-decreasing"),
-    DOWN("non-increasing");
+    UP,
+    DOWN;
 
-    private final String description;
-
-    SortOrder(final String description) {
-        this.description = description;
-    }
-
-    /**
-     * Method to get the string description of the SortOrder
-     * @return
-     */
-    public String getDescription() {
-        return description;
-    }
+    SortOrder() {}
 
     /**
      * Method to get SortOrder from string name or description
@@ -32,8 +20,7 @@ public enum SortOrder {
      */
     public static Optional<SortOrder> of(final String val) {
        return Arrays.stream(SortOrder.values()).
-                filter(order -> order.getDescription().equals(val) ||
-                        order.name().equals(val)).findFirst();
+                filter(order -> order.name().equals(val)).findFirst();
     }
 
 }

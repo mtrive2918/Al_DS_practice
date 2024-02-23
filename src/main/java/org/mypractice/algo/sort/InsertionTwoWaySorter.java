@@ -11,7 +11,7 @@ public class InsertionTwoWaySorter<T extends Comparable<T>> extends AbstractTwoW
     private InsertionSorter<T> sorter = new InsertionSorter<>();
 
     @Override
-    public List<T> sort(List<T> unsortedList) {
+    protected List<T> sort(List<T> unsortedList) {
         return sorter.sort(unsortedList);
     }
 

@@ -6,8 +6,7 @@ import java.util.List;
 public class BubbleSorter<T extends Comparable<T>> extends AbstractTwoWaySorter<T> {
 
     @Override
-    public List<T> sort(final List<T> unsortedList) {
-        if (unsortedList == null) return null;
+    protected List<T> sort(final List<T> unsortedList) {
         final List<T> mutableList = new ArrayList<>(unsortedList);
         final int len = mutableList.size();
         for (int i = 0; i < len; i++) {
