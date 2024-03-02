@@ -4,8 +4,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Utility class to define methods used by sorter classes.
+ */
 public final class SortUtils {
 
+    /**
+     * restricting instantiation
+     */
+    private SortUtils(){}
+
+    /**
+     * Method to reverse the list.
+     * @param original List
+     * @return reversed list
+     * @param <T> Type of objects in the list
+     */
     public static <T> List<T> reverse(final List<T> original) {
         if (original == null) {
             return Collections.emptyList();
