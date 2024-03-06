@@ -12,28 +12,28 @@ public class MergeSorter<T extends Comparable<T>> extends AbstractTwoWaySorter<T
         return mutableList;
     }
 
-    private void mergeSort(List<T> mutableList, int right, int left) {
-        if (right >= left) return;
-        int mid = (right + left) / 2;
-        mergeSort(mutableList, right, mid);
-        mergeSort(mutableList, mid + 1, left);
-        merge(mutableList, right, mid, left);
+    private void mergeSort(List<T> mutableList, int left, int right) {
+        if (left >= right) return;
+        int mid = (left + right) / 2;
+        mergeSort(mutableList, left, mid);
+        mergeSort(mutableList, mid + 1, right);
+        merge(mutableList, left, mid, right);
     }
 
-    private void merge(List<T> mutableList, int right, int mid, int left) {
-        List<T> temp = new ArrayList<>(left - right + 1);
-        int rp = right;
-        int lp = mid + 1;
-        while (rp <= mid || lp <= left) {
-            if (rp > mid ||
-                    (lp <= left && mutableList.get(lp).compareTo(mutableList.get(rp)) < 0)) {
-                temp.add(mutableList.get(lp++));
-            } else {
+    private void merge(List<T> mutableList, int left, int mid, int right) {
+        List<T> temp = new ArrayList<>(right - left + 1);
+        int lp = left;
+        int rp = mid + 1;
+        while (lp <= mid || rp <= right) {
+            if (lp > mid ||
+                    (rp <= right && mutableList.get(rp).compareTo(mutableList.get(lp)) < 0)) {
                 temp.add(mutableList.get(rp++));
+            } else {
+                temp.add(mutableList.get(lp++));
             }
         }
-        for (int i = 0; i <= left - right; i++) {
-            mutableList.set(right + i, temp.get(i));
+        for (int i = 0; i <= right - left; i++) {
+            mutableList.set(left + i, temp.get(i));
         }
     }
 
