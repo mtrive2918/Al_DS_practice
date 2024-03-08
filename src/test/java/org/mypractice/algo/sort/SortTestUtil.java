@@ -8,17 +8,13 @@ import java.util.stream.Stream;
 
 public final class SortTestUtil {
 
-    private static final List<Integer> LIST_SIZES = List.of(1, 2, 10, 41, 100, 1000, 10000, 100000);
+    private static final List<Integer> LIST_SIZES = List.of(1, 2, 10, 41, 100, 1000, 10000);
 
-    private static final List<Integer> BIGGER_LIST_SIZES = List.of(1000000, 10000000);
+    private static final List<Integer> BIGGER_LIST_SIZES = List.of(100000, 1000000, 10000000);
 
     private static final long SEED = 104L;
 
     private static final Random random = new Random(SEED);
-
-    static <T extends Comparable<T>> boolean isSorted(final List<T> list) {
-        return isSorted(list, SortOrder.UP);
-    }
 
     static <T extends Comparable<T>> boolean isSorted(final List<T> list, final SortOrder sortOrder) {
         if (list == null) return true;

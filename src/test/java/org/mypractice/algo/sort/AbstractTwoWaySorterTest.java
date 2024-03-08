@@ -1,5 +1,7 @@
 package org.mypractice.algo.sort;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,9 +10,12 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.List;
 
+@Getter
+@Setter
 public abstract class AbstractTwoWaySorterTest {
 
     private TwoWaySorter<Integer> integerSorter;
+
     private TwoWaySorter<Double> doubleSorter;
 
     @BeforeEach
@@ -19,22 +24,6 @@ public abstract class AbstractTwoWaySorterTest {
     }
 
     public abstract void initSorters();
-
-    public TwoWaySorter<Integer> getIntegerSorter() {
-        return integerSorter;
-    }
-
-    public TwoWaySorter<Double> getDoubleSorter() {
-        return doubleSorter;
-    }
-
-    public void setIntegerSorter(final TwoWaySorter<Integer> integerSorter) {
-        this.integerSorter = integerSorter;
-    }
-
-    public void setDoubleSorter(final TwoWaySorter<Double> doubleSorter) {
-        this.doubleSorter = doubleSorter;
-    }
 
     @ParameterizedTest(name = "Integer list containing {1} randomly ordered elements.")
     @MethodSource("org.mypractice.algo.sort.SortTestUtil#getRandomIntLists")

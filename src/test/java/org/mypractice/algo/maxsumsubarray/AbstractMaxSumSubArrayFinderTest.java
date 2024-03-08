@@ -1,11 +1,15 @@
 package org.mypractice.algo.maxsumsubarray;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@Getter
+@Setter
 public abstract class AbstractMaxSumSubArrayFinderTest {
 
     private MaxSumSubArrayFinder maxSumSubArrayFinder;
@@ -16,14 +20,6 @@ public abstract class AbstractMaxSumSubArrayFinderTest {
     }
 
     public abstract void initFinder();
-
-    public MaxSumSubArrayFinder getMaxSumSubArrayFinder() {
-        return maxSumSubArrayFinder;
-    }
-
-    public void setMaxSumSubArrayFinder(final MaxSumSubArrayFinder maxSumSubArrayFinder) {
-        this.maxSumSubArrayFinder = maxSumSubArrayFinder;
-    }
 
     @ParameterizedTest
     @EmptySource
