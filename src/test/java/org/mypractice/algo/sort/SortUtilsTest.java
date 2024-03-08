@@ -11,7 +11,7 @@ import java.util.List;
 class SortUtilsTest {
 
     @ParameterizedTest(name = "Integer list containing {1} randomly ordered elements.")
-    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getRandomIntLists")
+    @MethodSource("org.mypractice.algo.sort.SortTestUtil#getRandomIntLists")
     void reverse_non_empty_list(List<Integer> list, int size) {
         List<Integer> reversedList = SortUtils.reverse(list);
         Assertions.assertTrue(isReversed(list, reversedList));

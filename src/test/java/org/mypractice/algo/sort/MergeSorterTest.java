@@ -15,10 +15,10 @@ public class MergeSorterTest extends AbstractTwoWaySorterTest {
     }
 
     @ParameterizedTest(name = "Integer list containing {1} randomly ordered elements.")
-    @MethodSource("org.mypractice.algo.sort.SortTestUtils#getBiggerRandomIntLists")
+    @MethodSource("org.mypractice.algo.sort.SortTestUtil#getBiggerRandomIntLists")
     protected void random_int_big_lists_sorted_up(List<Integer> list, int listSize) {
-        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        List<Integer> output = getIntegerSorter().sort(list, SortOrder.UP);
         Assertions.assertNotNull(output);
-        Assertions.assertTrue(SortTestUtils.isSorted(output, SortOrder.UP));
+        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.UP));
     }
 }
