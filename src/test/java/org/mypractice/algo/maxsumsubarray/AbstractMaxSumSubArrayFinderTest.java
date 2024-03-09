@@ -28,16 +28,23 @@ public abstract class AbstractMaxSumSubArrayFinderTest {
         Assertions.assertEquals(0, maxSubArray.length);
     }
 
-    @ParameterizedTest(name = "Positive integer list of size: {2}")
+    @ParameterizedTest(name = "Positive integer array of size: {2}")
     @MethodSource("org.mypractice.algo.maxsumsubarray.MaxSumSubArrayTestUtil#getPositiveIntArrays")
     public void postive_int_arrays(int[] nums, int[] expectedMaxSumSubArray, int size) {
         int[] result = maxSumSubArrayFinder.find(nums);
         MaxSumSubArrayTestUtil.validateMaxSubArrayResult(expectedMaxSumSubArray, result);
     }
 
-    @ParameterizedTest(name = "Negative integer list of size: {2}")
+    @ParameterizedTest(name = "Negative integer array of size: {2}")
     @MethodSource("org.mypractice.algo.maxsumsubarray.MaxSumSubArrayTestUtil#getNegativeIntArrays")
     public void negative_int_arrays(int[] nums, int[] expectedMaxSumSubArray, int size) {
+        int[] result = maxSumSubArrayFinder.find(nums);
+        MaxSumSubArrayTestUtil.validateMaxSubArrayResult(expectedMaxSumSubArray, result);
+    }
+
+    @ParameterizedTest(name = "Random positive and negative integer array of size: {2}")
+    @MethodSource("org.mypractice.algo.maxsumsubarray.MaxSumSubArrayTestUtil#getRandomIntArrays")
+    public void random_int_arrays(int[] nums, int[] expectedMaxSumSubArray, int size) {
         int[] result = maxSumSubArrayFinder.find(nums);
         MaxSumSubArrayTestUtil.validateMaxSubArrayResult(expectedMaxSumSubArray, result);
     }
