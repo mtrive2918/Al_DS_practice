@@ -11,7 +11,7 @@ public abstract class AbstractTwoWaySorter<T extends Comparable<T>> implements T
             return Collections.emptyList();
         }
         List<T> updatedList = sort(unsortedList);
-        if (SortOrder.DOWN == sortOrder) {
+        if (SortOrder.NON_INCREASING == sortOrder) {
             updatedList = SortUtils.reverse(updatedList);
         }
         return updatedList;

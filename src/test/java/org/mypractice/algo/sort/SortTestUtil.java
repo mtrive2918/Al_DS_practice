@@ -20,10 +20,10 @@ public final class SortTestUtil {
         if (list == null) return true;
         for (int i = 1; i < list.size(); i++) {
             switch (sortOrder) {
-                case UP:
+                case NON_DECREASING:
                     if (list.get(i).compareTo(list.get(i - 1)) < 0) return false;
                     break;
-                case DOWN:
+                case NON_INCREASING:
                     if (list.get(i).compareTo(list.get(i - 1)) > 0) return false;
                     break;
                 default:

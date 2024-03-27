@@ -6,7 +6,7 @@ import java.util.List;
 public class MergeSorter<T extends Comparable<T>> extends AbstractTwoWaySorter<T> {
 
     @Override
-    protected List<T> sort(List<T> unsortedList) {
+    public List<T> sort(List<T> unsortedList) {
         final List<T> mutableList = new ArrayList<>(unsortedList);
         mergeSort(mutableList, 0, mutableList.size() - 1);
         return mutableList;

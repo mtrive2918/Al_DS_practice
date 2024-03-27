@@ -28,42 +28,42 @@ public abstract class AbstractTwoWaySorterTest {
     @ParameterizedTest(name = "Integer list containing {1} randomly ordered elements.")
     @MethodSource("org.mypractice.algo.sort.SortTestUtil#getRandomIntLists")
     protected void random_int_lists_sorted_up(List<Integer> list, int listSize) {
-        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        List<Integer> output = integerSorter.sort(list, SortOrder.NON_DECREASING);
         Assertions.assertNotNull(output);
-        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.UP));
+        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.NON_DECREASING));
     }
 
     @ParameterizedTest(name = "Double list containing {1} randomly ordered elements.")
     @MethodSource("org.mypractice.algo.sort.SortTestUtil#getRandomDoublesLists")
     protected void random_double_lists_sorted_down(List<Double> list, int listSize) {
-        List<Double> output = doubleSorter.sort(list, SortOrder.DOWN);
+        List<Double> output = doubleSorter.sort(list, SortOrder.NON_INCREASING);
         Assertions.assertNotNull(output);
-        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.DOWN));
+        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.NON_INCREASING));
     }
 
     @ParameterizedTest(name = "Integer list containing {1} elements in increasing order.")
     @MethodSource("org.mypractice.algo.sort.SortTestUtil#getIncreasingIntLists")
     protected void increasing_int_lists_sorted_up(List<Integer> list, int listSize) {
-        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        List<Integer> output = integerSorter.sort(list, SortOrder.NON_DECREASING);
         Assertions.assertNotNull(output);
-        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.UP));
+        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.NON_DECREASING));
     }
 
     @ParameterizedTest(name = "Integer list containing {1} elements in decreasing order.")
     @MethodSource("org.mypractice.algo.sort.SortTestUtil#getDecreasingIntLists")
     protected void decreasing_int_lists_sorted_up(List<Integer> list, int listSize) {
-        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        List<Integer> output = integerSorter.sort(list, SortOrder.NON_DECREASING);
         Assertions.assertNotNull(output);
-        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.UP));
+        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.NON_DECREASING));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     protected void null_and_empty_list(List<Integer> list) {
-        List<Integer> output = integerSorter.sort(list, SortOrder.UP);
+        List<Integer> output = integerSorter.sort(list, SortOrder.NON_DECREASING);
         Assertions.assertNotNull(output);
         Assertions.assertEquals(0, output.size());
-        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.UP));
+        Assertions.assertTrue(SortTestUtil.isSorted(output, SortOrder.NON_DECREASING));
     }
 
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 class SortOrderTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"UP", "DOWN"})
+    @ValueSource(strings = {"NON_DECREASING", "NON_INCREASING"})
     void get_enum_from_valid_string(String val) {
         Optional<SortOrder> sortOrderOptional = SortOrder.of(val);
         Assertions.assertFalse(sortOrderOptional.isEmpty());

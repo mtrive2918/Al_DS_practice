@@ -8,8 +8,8 @@ import java.util.Optional;
  */
 public enum SortOrder {
 
-    UP,
-    DOWN;
+    NON_DECREASING,
+    NON_INCREASING;
 
     SortOrder() {}
 
