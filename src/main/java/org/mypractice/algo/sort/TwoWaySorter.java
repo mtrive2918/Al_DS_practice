@@ -3,7 +3,7 @@ package org.mypractice.algo.sort;
 import java.util.List;
 
 /**
- * Interface used for sorting comparable type objects in both non-decreasing and non-increasing order
+ * Interface to sort comparable type objects in both non-decreasing and non-increasing order
  * @param <T> Comparable Type
  */
 public interface TwoWaySorter<T extends Comparable<T>> {

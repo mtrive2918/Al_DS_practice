@@ -3,6 +3,10 @@ package org.mypractice.ds.heap;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of MaxHeap using ArrayList.
+ * @param <T> Comparable Type
+ */
 public class ArraylistMaxHeap<T extends Comparable<T>> implements MaxHeap<T> {
 
     private final List<T> elements;

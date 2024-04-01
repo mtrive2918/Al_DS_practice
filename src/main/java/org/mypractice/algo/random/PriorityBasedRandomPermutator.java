@@ -7,6 +7,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Implemention of RandomPermutator by assigning random priority to the items and then
+ * sorting them based on the priority.
+ * @param <T> Generic Type
+ */
 public class PriorityBasedRandomPermutator<T> implements RandomPermutator<T> {
 
     private final Random random = new Random(104L);

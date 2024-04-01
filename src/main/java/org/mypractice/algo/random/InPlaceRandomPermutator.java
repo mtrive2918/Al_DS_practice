@@ -5,6 +5,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Implementation of RandomPermutator by swapping the current element(index i) with any random element from the
+ * sublist of elements(index i to len - 1) iteratively.
+ * @param <T> Generic Type
+ */
 public class InPlaceRandomPermutator<T> implements RandomPermutator<T> {
 
     private final Random random = new Random(104L);

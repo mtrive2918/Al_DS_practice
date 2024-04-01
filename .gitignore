@@ -1,0 +1,6 @@
+# Intellij auto generated files
+.idea
+*.iml
+
+# Maven build output
+target/
