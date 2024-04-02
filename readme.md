@@ -16,4 +16,5 @@ The implementations are not optimized, but are intended to be readable and corre
 
 ## Data Structures
 1. Heap
-   * [Max Heap](src/main/java/org/mypractice/ds/heap/MaxHeap.java)
+   * [Max Heap](src/main/java/org/mypractice/ds/heap/ArraylistMaxHeap.java)
+   * [Min Heap](src/main/java/org/mypractice/ds/heap/ArrayListMinHeap.java)

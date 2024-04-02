@@ -3,6 +3,7 @@ package org.mypractice.ds.heap;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mypractice.Constants;
 
 import java.util.List;
 import java.util.Random;
@@ -12,12 +13,10 @@ class ArrayListMaxHeapTest {
     private ArraylistMaxHeap<Integer> heap;
     private List<Integer> input;
 
-    private final Random random = new Random();
-
     @BeforeEach
     public void setup() {
         heap = new ArraylistMaxHeap<>();
-        input = random.ints(10, 0, 101).boxed().toList();
+        input = Constants.random.ints(10, 0, 101).boxed().toList();
         input.forEach(val -> heap.add(val));
     }
 
@@ -31,7 +30,7 @@ class ArrayListMaxHeapTest {
     }
 
     @Test
-    void update_with_larger_value() {
+    void update_with_greater_value() {
         boolean res = heap.update(4, 102);
         Assertions.assertTrue(res);
     }

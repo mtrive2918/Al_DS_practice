@@ -2,7 +2,7 @@ package org.mypractice.debug;
 
 import java.util.Arrays;
 
-public class Experiment {
+public class Experiment implements Runnable {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         System.out.println("\nFinding median for arrays: \n"
@@ -57,6 +57,7 @@ public class Experiment {
         }
     }
 
+    @Override
     public void run() {
         int[] nums1 = {1, 3, 7};
         int[] nums2 = {2, 11, 14, 21};

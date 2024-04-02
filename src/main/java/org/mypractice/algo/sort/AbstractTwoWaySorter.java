@@ -7,7 +7,7 @@ public abstract class AbstractTwoWaySorter<T extends Comparable<T>> implements T
 
     @Override
     public List<T> sort(List<T> unsortedList, SortOrder sortOrder) {
-        if (unsortedList == null || unsortedList.isEmpty()) {
+        if (SortUtils.isNullOrEmpty(unsortedList)) {
             return Collections.emptyList();
         }
         List<T> updatedList = sort(unsortedList);

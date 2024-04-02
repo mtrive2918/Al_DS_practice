@@ -37,4 +37,8 @@ public final class SortUtils {
         }
         return reverse;
     }
+
+    public static <T> boolean isNullOrEmpty(List<T> list) {
+        return list == null || list.isEmpty();
+    }
 }
