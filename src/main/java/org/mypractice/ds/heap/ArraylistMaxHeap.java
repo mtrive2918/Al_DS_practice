@@ -66,35 +66,19 @@ public class ArraylistMaxHeap<T extends Comparable<T>> implements MaxHeap<T> {
         return maxHeapifyTowardsRoot(index, element);
     }
 
-    private int getParent(int index) {
-        return index == 0 ? -1 : getParentPositiveNonZero(index);
-    }
-
-    private int getParentPositiveNonZero(int index) {
-        return index % 2 == 0 ? (index - 1) / 2 : index / 2;
-    }
-
-    private int getRight(int index) {
-        return 2 * index + 2;
-    }
-
-    private int getLeft(int index) {
-        return 2 * index + 1;
-    }
-
     private boolean maxHeapifyTowardsRoot(int index, T element) {
         if (index < 0 || index >= elements.size()
-        || (elements.get(index) != null && elements.get(index).compareTo(element) >= 0)) {
+                || (elements.get(index) != null && elements.get(index).compareTo(element) >= 0)) {
             return false;
         }
         int current = index;
-        int parentIndex = getParent(current);
+        int parentIndex = getParentIndex(current);
         while (parentIndex >= 0
                 && elements.get(parentIndex) != null
                 && elements.get(parentIndex).compareTo(element) < 0) {
             elements.set(current, elements.get(parentIndex));
             current = parentIndex;
-            parentIndex = getParent(current);
+            parentIndex = getParentIndex(current);
         }
         elements.set(current, element);
         return true;
@@ -106,12 +90,12 @@ public class ArraylistMaxHeap<T extends Comparable<T>> implements MaxHeap<T> {
         }
         T element = elements.get(index);
         int current = index;
-        int right = getRight(current);
-        int left = getLeft(current);
+        int right = getRightChildIndex(current);
+        int left = getLeftChildIndex(current);
         int maxIndex = elements.size() - 1;
         while (left <= maxIndex || right <= maxIndex) {
             if ((left <= maxIndex && elements.get(left).compareTo(element) > 0)
-            && (right > maxIndex ||  elements.get(left).compareTo(elements.get(right)) >= 0)) {
+                    && (right > maxIndex ||  elements.get(left).compareTo(elements.get(right)) >= 0)) {
                 elements.set(current, elements.get(left));
                 current = left;
             } else if(right <= maxIndex && elements.get(right).compareTo(element) > 0) {
@@ -120,9 +104,26 @@ public class ArraylistMaxHeap<T extends Comparable<T>> implements MaxHeap<T> {
             } else {
                 break;
             }
-            left = getLeft(current);
-            right = getRight(current);
+            left = getLeftChildIndex(current);
+            right = getRightChildIndex(current);
         }
         elements.set(current, element);
     }
+
+    private int getParentIndex(int index) {
+        return index == 0 ? -1 : getParentIndexPositiveNonZero(index);
+    }
+
+    private int getParentIndexPositiveNonZero(int index) {
+        return index % 2 == 0 ? (index - 1) / 2 : index / 2;
+    }
+
+    private int getLeftChildIndex(int index) {
+        return 2 * index + 1;
+    }
+
+    private int getRightChildIndex(int index) {
+        return 2 * index + 2;
+    }
+
 }

@@ -5,7 +5,7 @@ package org.mypractice.ds.heap;
  * top most element of the collection of elements.
  * @param <T> Type that defines the elements of the Heap
  */
-public interface Heap<T extends Comparable<T>> {
+public interface Heap<T> {
 
     /**
      * Adds a new element to the MaxHeap.

@@ -2,6 +2,10 @@ package org.mypractice.ds.heap;
 
 import java.util.ArrayList;
 
+/**
+ * Implementation of MinHeap using ArrayList.
+ * @param <T> Generic Type
+ */
 public class ArrayListMinHeap<T extends Comparable<T>> implements MinHeap<T> {
 
     private final ArrayList<T> elements;
@@ -59,31 +63,6 @@ public class ArrayListMinHeap<T extends Comparable<T>> implements MinHeap<T> {
         return minHeapifyTowardsRoot(index, element);
     }
 
-    private int getParentIndex(int index) {
-        return index == 0 ? -1 : getNonZeroParentIndex(index);
-    }
-
-    private int getNonZeroParentIndex(int index) {
-        return index % 2 == 0 ? (index - 1) / 2 : index / 2;
-    }
-
-    private int getLeftChildIndex(int index) {
-        return index * 2 + 1;
-    }
-
-    private int getRightChildIndex(int index) {
-        return index * 2 + 2;
-    }
-
-    private boolean isIndexValid(int index) {
-        return index < elements.size() && index >= 0;
-    }
-
-    private boolean isNewElementLowerThanCurrent(int index, T element) {
-        return isIndexValid(index) && element != null
-                && (elements.get(index) == null || element.compareTo(elements.get(index)) < 0);
-    }
-
     private boolean minHeapifyTowardsRoot(int index, T element) {
         if (!isNewElementLowerThanCurrent(index, element)) {
             return false;
@@ -114,7 +93,7 @@ public class ArrayListMinHeap<T extends Comparable<T>> implements MinHeap<T> {
         int right = getRightChildIndex(current);
         while (left <= maxIndex || right <= maxIndex) {
             if ((left <= maxIndex && elements.get(left).compareTo(currentElement) < 0)
-            && (right > maxIndex || elements.get(left).compareTo(elements.get(right)) < 0)) {
+                    && (right > maxIndex || elements.get(left).compareTo(elements.get(right)) < 0)) {
                 elements.set(current, elements.get(left));
                 current = left;
             } else if (right <= maxIndex && elements.get(right).compareTo(currentElement) < 0) {
@@ -128,6 +107,31 @@ public class ArrayListMinHeap<T extends Comparable<T>> implements MinHeap<T> {
         }
         elements.set(current, currentElement);
         return true;
+    }
+
+    private int getParentIndex(int index) {
+        return index == 0 ? -1 : getNonZeroParentIndex(index);
+    }
+
+    private int getNonZeroParentIndex(int index) {
+        return index % 2 == 0 ? (index - 1) / 2 : index / 2;
+    }
+
+    private int getLeftChildIndex(int index) {
+        return index * 2 + 1;
+    }
+
+    private int getRightChildIndex(int index) {
+        return index * 2 + 2;
+    }
+
+    private boolean isIndexValid(int index) {
+        return index < elements.size() && index >= 0;
+    }
+
+    private boolean isNewElementLowerThanCurrent(int index, T element) {
+        return isIndexValid(index) && element != null
+                && (elements.get(index) == null || element.compareTo(elements.get(index)) < 0);
     }
 
 }
