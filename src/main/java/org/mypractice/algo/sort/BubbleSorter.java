@@ -15,9 +15,7 @@ public class BubbleSorter<T extends Comparable<T>> extends AbstractTwoWaySorter<
             swapped = false;
             for (int j = len - 2; j > sortedLimit; j--) {
                 if (mutableList.get(j).compareTo(mutableList.get(j + 1)) > 0) {
-                    T temp = mutableList.get(j);
-                    mutableList.set(j, mutableList.get(j + 1));
-                    mutableList.set(j + 1, temp);
+                    SortUtils.swap(mutableList, j, j + 1);
                     swapped = true;
                 }
             }

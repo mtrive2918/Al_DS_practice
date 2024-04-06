@@ -24,25 +24,17 @@ public class QuickSorter<T extends Comparable<T>> extends AbstractTwoWaySorter<T
         }
     }
 
-    private int partition(List<T> input, int left, int right) {
+    protected int partition(List<T> input, int left, int right) {
         final T key = input.get(left);
         int swap = left + 1;
         for (int i = left + 1; i <= right; i++) {
             if (input.get(i).compareTo(key) < 0) {
-                swap(input, i, swap);
+                SortUtils.swap(input, i, swap);
                 swap++;
             }
         }
-        swap(input, left, swap - 1);
+        SortUtils.swap(input, left, swap - 1);
         return swap - 1;
     }
 
-    private void swap(List<T> input, int first, int second){
-        if (first == second) {
-            return;
-        }
-        T temp = input.get(first);
-        input.set(first, input.get(second));
-        input.set(second, temp);
-    }
 }

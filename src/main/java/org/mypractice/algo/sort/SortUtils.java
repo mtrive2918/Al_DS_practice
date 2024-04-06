@@ -26,19 +26,26 @@ public final class SortUtils {
         }
         final List<T> reverse = new ArrayList<>(original);
         int len = original.size();
-        int r = 0;
-        int l = len - 1;
-        while (r < l) {
-            T temp = reverse.get(r);
-            reverse.set(r, original.get(l));
-            reverse.set(l, temp);
-            r++;
-            l--;
+        int l = 0;
+        int r = len - 1;
+        while (l < r) {
+            swap(reverse, l, r);
+            l++;
+            r--;
         }
         return reverse;
     }
 
-    public static <T> boolean isNullOrEmpty(List<T> list) {
-        return list == null || list.isEmpty();
+    public static <T> boolean isNullOrEmpty(List<T> input) {
+        return input == null || input.isEmpty();
+    }
+
+    public static <T> void swap(List<T> input, int first, int second) {
+        if (first == second) {
+            return;
+        }
+        T temp = input.get(first);
+        input.set(first, input.get(second));
+        input.set(second, temp);
     }
 }

@@ -1,5 +1,6 @@
 package org.mypractice.algo.random;
 
+import lombok.AllArgsConstructor;
 import org.mypractice.algo.sort.MergeSorter;
 
 import java.util.ArrayList;
@@ -12,9 +13,10 @@ import java.util.Random;
  * sorting them based on the priority.
  * @param <T> Generic Type
  */
+@AllArgsConstructor
 public class PriorityBasedRandomPermutator<T> implements RandomPermutator<T> {
 
-    private final Random random = new Random(104L);
+    private final Random random;
 
     private final MergeSorter<Prioritized<T>> sorter = new MergeSorter<>();
 

@@ -1,5 +1,7 @@
 package org.mypractice.algo.random;
 
+import lombok.AllArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,9 +12,10 @@ import java.util.Random;
  * sublist of elements(index i to len - 1) iteratively.
  * @param <T> Generic Type
  */
+@AllArgsConstructor
 public class InPlaceRandomPermutator<T> implements RandomPermutator<T> {
 
-    private final Random random = new Random(104L);
+    private final Random random;
 
     @Override
     public List<T> randomize(List<T> given) {
