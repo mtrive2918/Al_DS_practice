@@ -8,6 +8,7 @@ The implementations are not optimized, but are intended to be readable and corre
    - [Insertion Sort](src/main/java/org/mypractice/algo/sort/InsertionSorter.java)
    - [Bubble Sort](src/main/java/org/mypractice/algo/sort/BubbleSorter.java)
    - [Merge Sort](src/main/java/org/mypractice/algo/sort/MergeSorter.java)
+   - [Iterative Merge Sort](src/main/java/org/mypractice/algo/sort/MergeIterativeSorter.java)
    - [Heap Sort](src/main/java/org/mypractice/algo/sort/HeapSorter.java)
    - [Quick Sort](src/main/java/org/mypractice/algo/sort/QuickSorter.java)
    - [Randomized Quick Sort](src/main/java/org/mypractice/algo/sort/RandomizedQuickSorter.java)
