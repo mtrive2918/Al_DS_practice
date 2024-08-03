@@ -93,7 +93,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>org/mypractice/Main.*</exclude>
-                                <exclude>org/mypractice/debug/*</exclude>
+                                <exclude>org/mypractice/debug/**/*</exclude>
                             </excludes>
                             <rules>
                                 <rule>
