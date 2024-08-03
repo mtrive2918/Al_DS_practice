@@ -4,9 +4,9 @@ import java.util.List;
 
 /**
  * Interface to sort comparable type objects in both non-decreasing and non-increasing order
- * @param <T> Comparable Type
+ * @param <T> Generic Type
  */
-public interface TwoWaySorter<T extends Comparable<T>> {
+public interface TwoWaySorter<T> {
 
     /**
      * Method to sort a list of comparable type of objects
