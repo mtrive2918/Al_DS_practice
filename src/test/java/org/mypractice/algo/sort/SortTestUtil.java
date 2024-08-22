@@ -33,9 +33,19 @@ public final class SortTestUtil {
                 .map(size -> Arguments.of(Constants.random.ints(size, -100, 101).boxed().toList(), size));
     }
 
-    static Stream<Arguments> getRandomDecimalDigitIntLists() {
+    static Stream<Arguments> getRandomDigitLists() {
         return LIST_SIZES.stream()
-                .map(size -> Arguments.of(Constants.random.ints(size, 0, 10).boxed().toList(), size));
+                .map(size -> Arguments.of(Constants.random.ints(size, 0, 36).boxed().map(Digit::valueOf).toList(), size));
+    }
+
+    static Stream<Arguments> getRandomDigitizedNaturalNumberLists() {
+        return LIST_SIZES.stream()
+                .map(size -> Arguments.of(Constants.random.ints(size, 0, Integer.MAX_VALUE).boxed().map(DigitizedNaturalNumber::valueOf).toList(), size));
+    }
+
+    static Stream<Arguments> getBiggerRandomDigitizedNaturalNumberLists() {
+        return BIGGER_LIST_SIZES.stream()
+                .map(size -> Arguments.of(Constants.random.ints(size, 0, Integer.MAX_VALUE).boxed().map(DigitizedNaturalNumber::valueOf).toList(), size));
     }
 
     static Stream<Arguments> getRandomDoublesLists() {
